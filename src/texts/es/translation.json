@@ -1,0 +1,26 @@
+{
+  "Check_Title": "Registro DE COVID-19",
+  "Check_Buttom": "Cargar Análisis",
+  "Check_TextField_Name": "Nombre",
+  "Check_TextField_Country": "País",
+  "Check_TextField_Result": "Resultado",
+  "Check_TextField_Id": "ID",
+  "Check_Title_Detail": "Detalle",
+  "Check_Title_New": "Nuevo Análisis",
+  "Check_Obligatory_Field": "* Campo Obligatorio",
+  "Check_Button_Cancel": "Cancelar",
+  "Check_Button_Save": "Crear",
+  "Check_Button_Accept": "Aceptar",
+  "Check_Message_Add": "El análisis se agrego correctamente.",
+  "Pagination_First_Page": "Ir a la primera página",
+  "Pagination_Previous_Page": "Volver a la página anterior",
+  "Pagination_Last_Page": "Ir a la página final",
+  "Pagination_Next_Page": "Avanzar a la siguente página",
+  "Row_By_Page": "Filas por página: ",
+  "Count_Row_Pagination": "de",
+  "Characters_Available": "* Caracteres disponibles ",
+  "Title_Validate_Save": "Información",
+  "Message_Validate_Save": "Hay errores en el formulario, por tal motivo no se pudo proceder con el guardado. Asegurese de que los campos obligatorios estén completos.",
+  "Button_Accept": "Aceptar"
+  
+}
