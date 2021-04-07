@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withStyles, Typography, Grid, Paper } from '@material-ui/core';
 import CheckTable from './CheckTable';
 import CheckForm from './CheckForm';
+import CheckFilter from './CheckFilter';
 import StatView from './StatView';
 import themeStyles from '../../styles/styles';
 import { useTranslation } from "react-i18next";
@@ -27,7 +28,8 @@ const CheckComponent = ({ classes, enqueueSnackbar }) => {
     const [cancelNotValid, setCancelNotValid] = useState(false);
     const [isReadOnly, setIsReadOnly] = useState(false);
     const [confirmOpen, setConfirmOpen] = useState(false);
-
+    const [filter, setFilter] = useState([]);
+    const [radioSelectedKey, setRadioSelectedKey] = useState('country');
 
 
     useEffect(() => {
@@ -88,12 +90,30 @@ const CheckComponent = ({ classes, enqueueSnackbar }) => {
     const checkSelection = (id) => {
         trackPromise(
             checkService.GetById(id).then(res => {
-                debugger;
                 setCurrentCheck(res.data);
+                setConfirmOpen(true);
             }).catch(res => {
                 errorResponseHandler(res, enqueueSnackbar);
             }));
     };
+
+    const getFilter = (key, values) => {
+        trackPromise(
+            checkService.GetFilterChecks(key, values).then(res => {
+                debugger;
+                setData(res.data);
+            }).catch(res => {
+                errorResponseHandler(res, enqueueSnackbar);
+            })
+        )
+    }
+
+    const getChecksFilter = () => {
+        debugger;
+        var a = filter.toString();
+         getFilter(radioSelectedKey, a);
+
+    }
 
     return (
 
@@ -109,6 +129,17 @@ const CheckComponent = ({ classes, enqueueSnackbar }) => {
                 <Grid item xs={12}>
                     <Paper elevation={0} elevation={0} style={{ background: '#EAEAEA' }} className={classes.paper}>
                         <StatView stats={currentStat}/>
+                    </Paper>
+                </Grid>
+                <Grid item xs={12}>
+                    <Paper className={classes.paper}>
+                        <CheckFilter 
+                        filterSelecteds={filter}
+                        setFilterSelecteds={setFilter}
+                        getFilterSelected={getChecksFilter}
+                        radioSelected={radioSelectedKey}
+                        setRadioSelected={setRadioSelectedKey}
+                        />
                     </Paper>
                 </Grid>
                 <Grid item xs={12}>

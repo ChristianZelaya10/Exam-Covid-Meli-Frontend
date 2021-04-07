@@ -35,9 +35,10 @@ const CheckTable = ({ classes, data, cleanScreen, componentDialog, setTitle, con
 
         },
         {
-            Header: 'Acciones',
+            Header: 'Detalle',
             accessor: 'actions',
-            disableSortBy: true
+            disableSortBy: true,
+            width: 80,
         }
     ]);
 
@@ -57,13 +58,14 @@ const CheckTable = ({ classes, data, cleanScreen, componentDialog, setTitle, con
     // PREPARO LOS DATOS (FILAS DE LA TABLA)
     const tableData = !data ? [] : data.map(d => {
         return {
+            id: d.id,
             name: d.name,
             country: d.country,
             result: d.result,
             actions: (
                 <>
                     <Tooltip title='Ver' placement="top">
-                        <IconButton size="small" onClick={() => { setConfirmOpenDialog(true); formDetail(d.id) }}>
+                        <IconButton size="small" onClick={() => {formDetail(d.id) }}>
                             <VisibilityIcon fontSize="inherit" className={classes.iconSee} />
                         </IconButton>
                     </Tooltip>

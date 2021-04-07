@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-//const USER_API_BASE_URL = 'http://localhost:8080'
-axios.defaults.baseURL = 'http://localhost:8080/covid'
+axios.defaults.baseURL = 'http://13.59.175.84:8080/covid'
+//axios.defaults.baseURL = 'http://localhost:8080/covid'
 
 export default class BaseService {
 
@@ -28,4 +28,9 @@ export default class BaseService {
     Delete(endpoint, resourceId) {
         return axios.delete(endpoint + '/' + resourceId);
     }
+
+    GetFilter(endpoint, keyParam, valueParam) {
+        return axios.get(endpoint, { params: { key: keyParam, values: valueParam } })
+
+    };
 }

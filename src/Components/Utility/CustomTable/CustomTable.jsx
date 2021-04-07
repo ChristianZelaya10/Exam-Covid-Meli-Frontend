@@ -71,6 +71,11 @@ const CustomTable = ({ classes, columns, data }) => {
         , useFlexLayout
         , usePagination)
 
+        const testRowClick = (id) => {
+            debugger;
+            var a = id;
+        }
+
 
     return (
         <TableContainer>
@@ -85,9 +90,11 @@ const CustomTable = ({ classes, columns, data }) => {
                         return (
                             <TableRow
                                 hover
-                                {...row.getRowProps()}>
+                                cursor
+                                {...row.getRowProps()}
+                                onClick={()=>testRowClick(row.original.id)}>
                                 {row.cells.map(cell => {
-                                    return <TableCell className={classes.column} {...cell.getCellProps()}>{cell.render('Cell')}</TableCell>
+                                    return <TableCell className={classes.column} style={{cursor: 'pointer'}} {...cell.getCellProps()}>{cell.render('Cell')}</TableCell>
                                 })}
                             </TableRow>
                         )
