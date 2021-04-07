@@ -1,13 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { Grid, TextField, Button, Typography } from '@material-ui/core';
-import { validateNotEmpty } from '../Utility/FormValidations';
-import Divider from '@material-ui/core/Divider';
-import ConfirmDialog from '../Utility/FormDialog';
-import SaveMessage from '../Utility/ValidateSaveMessage';
+import { Grid, Typography } from '@material-ui/core';
 import themeStyles from '../../styles/styles';
 import { useTranslation } from "react-i18next";
-import Autocomplete from '@material-ui/lab/Autocomplete';
+
 
 const StatView = ({ classes, stats }) => {
     const { t } = useTranslation();

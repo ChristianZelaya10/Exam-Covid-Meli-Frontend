@@ -21,7 +21,7 @@ const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSe
 
 
     const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-    const checkedIcon = <CheckBoxIcon fontSize="small" />;
+    const checkedIcon = <CheckBoxIcon fontSize="small" color="primary"/>;
 
     const StyledRadio = (props) => {
         return (
@@ -35,6 +35,11 @@ const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSe
         );
     }
 
+    const Selecteds = (event, newValue) => {
+        filterSelecteds.length = 0;
+        setFilterSelecteds(newValue)
+    }
+
     const componentResult = (
         <Autocomplete
             multiple
@@ -44,10 +49,7 @@ const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSe
             fullWidth
             disableCloseOnSelect
             onChange={(event, newValue) => {
-                setFilterSelecteds([
-                    ...filterSelecteds,
-                    ...newValue.filter((option) => filterSelecteds.indexOf(option) === -1),
-                ]);
+                Selecteds(event, newValue);
             }}
             getOptionLabel={(option) => option}
             renderOption={(option, { selected }) => (
@@ -63,7 +65,7 @@ const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSe
             )}
             style={{ width: 500 }}
             renderInput={(params) => (
-                <TextField {...params} variant="outlined" label="Seleccione los valores que desea filtrar" placeholder="Resultados" />
+                <TextField {...params} variant="outlined" label={t('Message_Combo')} placeholder="Resultados" />
             )}
         />
     )
@@ -77,10 +79,7 @@ const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSe
             fullWidth
             disableCloseOnSelect
             onChange={(event, newValue) => {
-                setFilterSelecteds([
-                    ...filterSelecteds,
-                    ...newValue.filter((option) => filterSelecteds.indexOf(option) === -1),
-                ]);
+                Selecteds(event, newValue);
             }}
             getOptionLabel={(option) => option}
             renderOption={(option, { selected }) => (
@@ -96,25 +95,17 @@ const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSe
             )}
             style={{ width: 500 }}
             renderInput={(params) => (
-                <TextField {...params} variant="outlined" label="Seleccione los valores que desea filtrar" placeholder="Paises" />
+                <TextField {...params} variant="outlined" label={t('Message_Combo')} placeholder="Paises" />
             )}
         />
     );
 
-    const ReturnSelect = () => {
-        debugger;
-        if (radioSelected == 'country') {
-            //return (<SelectCountry />);
-        }
-        else {
-            return <h1>Prueba</h1>
-        }
-    }
-
     return (
         <>
             <Grid container item xs={12} sm={12} lg={12} spacing={2}>
-                <Grid item lg={4} xs={4} sm={4}>
+                <Grid item lg={4} xs={4} sm={4} container
+                    direction="row"
+                    justify="center" alignItems="center">
                     <FormControl component="fieldset">
                         <FormLabel component="legend">Filtrar por: </FormLabel>
                         <RadioGroup defaultValue="country" aria-label="gender" name="customized-radios">
@@ -132,7 +123,7 @@ const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSe
                     direction="row"
                     justify="center" alignItems="center">
                     <Button color="primary"
-                        fullWidth variant="contained" onClick={getFilterSelected} style={{ marginRight: '10px' }}>Buscar</Button>
+                        fullWidth variant="contained" onClick={getFilterSelected} style={{ marginRight: '10px' }}>Aplicar</Button>
                 </Grid>
             </Grid>
         </>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect} from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Grid, TextField, Button, Typography } from '@material-ui/core';
 import { validateNotEmpty } from '../Utility/FormValidations';
@@ -13,13 +13,14 @@ const OwnerForm = ({ classes, check, setCheck, title,
     onCancelClick, setCancelNotValid, cancelNotValid, isReadOnly, onSaveClick, setConfirmOpen }) => {
     const { t } = useTranslation();
     const [nameValid, setNameValid] = useState(true);
+    const [dnaValid, setDnaValid] = useState(true);
     const [countryValid, setCountryValid] = useState(true);
     const [didMount, setDidMount] = useState(false);
     const [charactersName, setCharactersName] = useState(50);
     const [componentSave, setComponentSave] = useState();
     const [maxWidth, setMaxWidth] = useState('sm');
     const [confirmOpenModalSave, setConfirmOpenModalSave] = useState(false);
-    const [dnaString, setDnaString] = useState('');
+    const [errorHelper, setErrorHelper] = useState(t('Check_Obligatory_Field'));
 
     // No hago validaciones hasta que el componente no haya terminado de cargar
     useEffect(() => { setDidMount(true) }, [])
@@ -36,19 +37,49 @@ const OwnerForm = ({ classes, check, setCheck, title,
         }
     }, [check.country]);
 
+    useEffect(() => {
+        if (didMount) {
+            validateNotEmpty(check.dna, setDnaValid, cancelNotValid, setCancelNotValid);
+        }
+    }, [check.dna]);
+
+    const validate_dna = (string, onError, onErrorHelper) => {
+        if (string) {
+            for (var i = 0; i < string.length; i++) {
+                var regex = /^([ATCG-atcg_\s+ \,\\n])/;
+                var a = regex.test(string.charAt(i)) ? true : false;
+
+                if (!a) {
+                    onError(false);
+                    onErrorHelper(t('Check_Format_Dna'));
+                    return false;
+                }
+            }
+        }
+        else {
+            onError(false);
+            onErrorHelper(t('Check_Obligatory_Field'));
+            return false;
+        }
+    };
+
     const validateForm = () => {
         validateNotEmpty(check.name, setNameValid, cancelNotValid, setCancelNotValid);
         validateNotEmpty(check.country, setCountryValid, cancelNotValid, setCancelNotValid);
+        validateNotEmpty(check.dna, setDnaValid, cancelNotValid, setCancelNotValid);
 
-        debugger;
-
-        let prue = check.dna.trim().replace(/ /g, "");
-        let arr = prue.split(/[\n,]+/);
-        check.dna = arr;
-
-        if (check.name != '' && check.country != '') {
-            onSaveClick();
-            setConfirmOpen(false);
+        if (check.name != '' && check.country != '' && check.dna != '') {
+            let stringDna = check.dna.trim().replace(/ /g, "");
+            let arrayDna = stringDna.split(/[\n,]+/);
+            if (arrayDna[0].length == arrayDna.length) {
+                check.dna = arrayDna;
+                onSaveClick();
+                setConfirmOpen(false);
+            }
+            else{
+                setErrorHelper(t('Check_Format_Array'));
+                setDnaValid(false);
+            }
         }
         else {
             setConfirmOpenModalSave(true);
@@ -69,18 +100,18 @@ const OwnerForm = ({ classes, check, setCheck, title,
             <Divider className={classes.divider} />
             {
                 check.id != '' ? <Grid item xs={12} sm={12} lg={12}>
-                <TextField value={check.id}
-                    InputProps={{
-                        readOnly: isReadOnly,
-                    }}
-                    className={classes.lineBreak}
-                    size="small"
-                    label={t('Check_TextField_Id')}
-                    fullWidth variant="outlined"
-                />
-            </Grid>
-            :
-            <></>
+                    <TextField value={check.id}
+                        InputProps={{
+                            readOnly: isReadOnly,
+                        }}
+                        className={classes.lineBreak}
+                        size="small"
+                        label={t('Check_TextField_Id')}
+                        fullWidth variant="outlined"
+                    />
+                </Grid>
+                    :
+                    <></>
             }
             <Grid item xs={12} sm={12} lg={12}>
                 <TextField value={check.name}
@@ -105,7 +136,7 @@ const OwnerForm = ({ classes, check, setCheck, title,
                     className={classes.formControl}
                     onBlur={(e) => validateNotEmpty(e.target.value, setCountryValid, cancelNotValid, setCancelNotValid)}
                     onChange={(e, value) => setCheck({ ...check, country: value })}
-                    options={['Argentina', 'Brasil', 'Uruguay', 'Paraguay']}
+                    options={['Argentina', 'Brasil', 'Uruguay', 'Paraguay', 'Peru']}
                     getOptionLabel={(option) => option}
                     renderInput={(params) => <TextField {...params}
                         error={!countryValid}
@@ -120,8 +151,12 @@ const OwnerForm = ({ classes, check, setCheck, title,
                     InputProps={{
                         readOnly: isReadOnly,
                     }}
-                    className={classes.lineBreak} helperText={isReadOnly ? "" : t('Check_Obligatory_Field')}
-                    onChange={(e) => { setCheck({...check, dna: e.target.value}) }}
+                    //onBlur={(e) => validateNotEmpty(e.target.value, setDnaValid, cancelNotValid, setCancelNotValid)}
+                    onBlur={(e) => validate_dna(e.target.value, setDnaValid, setErrorHelper)}
+                    className={classes.lineBreak} helperText={isReadOnly ? "" : errorHelper}
+                    onChange={(e) => { setCheck({ ...check, dna: e.target.value }) }}
+                    error={!dnaValid}
+                    className={classes.lineBreak}
                     multiline
                     rows="4"
                     size="small"
@@ -146,7 +181,7 @@ const OwnerForm = ({ classes, check, setCheck, title,
             <Divider className={classes.divider} />
             <Grid justify="flex-end" container item xs={12} sm={12} lg={12}>
                 <Grid hidden={isReadOnly}>
-                    <Button onClick={validateForm} className={classes.saveButton}>
+                    <Button variant="contained" color="primary" onClick={validateForm}>
                         {t('Check_Button_Save')}
                     </Button>
                     <Button onClick={() => { setConfirmOpen(false); onCancelClick() }} className={classes.cancelButton}>

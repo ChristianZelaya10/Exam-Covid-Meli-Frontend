@@ -15,7 +15,6 @@ export default class CheckService extends BaseService {
     }
 
     GetFilterChecks(keyParam, valuesParam){
-        debugger
         return super.GetFilter('/checks/search', keyParam, valuesParam);
 
     }

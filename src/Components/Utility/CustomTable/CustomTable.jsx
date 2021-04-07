@@ -11,7 +11,6 @@ import themeStyles from '../../../styles/styles';
 
 const CustomTable = ({ classes, columns, data }) => {
     const [loaded, setLoaded] = useState(false);
-    const [editingRow, setEditingRow] = useState();
     const [pageIndex, setPageIndex] = useState(0);
     const [pageSize, setPageSize] = useState(5);
     const [canNextPage, setCanNextPage] = useState(false);
@@ -71,11 +70,6 @@ const CustomTable = ({ classes, columns, data }) => {
         , useFlexLayout
         , usePagination)
 
-        const testRowClick = (id) => {
-            debugger;
-            var a = id;
-        }
-
 
     return (
         <TableContainer>
@@ -90,11 +84,9 @@ const CustomTable = ({ classes, columns, data }) => {
                         return (
                             <TableRow
                                 hover
-                                cursor
-                                {...row.getRowProps()}
-                                onClick={()=>testRowClick(row.original.id)}>
+                                {...row.getRowProps()}>
                                 {row.cells.map(cell => {
-                                    return <TableCell className={classes.column} style={{cursor: 'pointer'}} {...cell.getCellProps()}>{cell.render('Cell')}</TableCell>
+                                    return <TableCell className={classes.column} {...cell.getCellProps()}>{cell.render('Cell')}</TableCell>
                                 })}
                             </TableRow>
                         )

@@ -1,7 +1,4 @@
-﻿import React from 'react';
-import { useTheme } from '@material-ui/core/styles';
-
-const themeStyles = ({ breakpoints }) => ({
+﻿const themeStyles = ({ breakpoints }) => ({
     root: {
         padding: 24
     },
