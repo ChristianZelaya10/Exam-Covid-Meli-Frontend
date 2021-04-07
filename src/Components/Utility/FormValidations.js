@@ -1,6 +1,6 @@
 ﻿export function validateNotEmpty(value, valid, cancelNotValid, setCancelNotValid) {
     if (!cancelNotValid) {
-        if (value !== "" && value !== null) {
+        if (value != "" && value != null) {
             valid(true);
         } else {
             valid(false);

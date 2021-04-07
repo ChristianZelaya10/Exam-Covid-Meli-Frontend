@@ -22,13 +22,6 @@ const ConfirmDialog = (props, classes) => {
                 <DialogContent>
                     {props.component}
                 </DialogContent>
-                <Grid hidden={!props.isABM ? true : false}>
-                <DialogActions>
-                    <Button onClick={handleClose} className={classes.cancelButton}>
-                        Aceptar
-                   </Button>
-                </DialogActions>
-                </Grid>
             </Dialog>
     );
 
