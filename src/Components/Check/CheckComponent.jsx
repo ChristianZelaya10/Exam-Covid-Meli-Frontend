@@ -4,6 +4,8 @@ import CheckTable from './CheckTable';
 import CheckForm from './CheckForm';
 import CheckFilter from './CheckFilter';
 import StatView from './StatView';
+import DataCountry from './DataCountry';
+import DataResult from './DataResult';
 import themeStyles from '../../styles/styles';
 import { useTranslation } from "react-i18next";
 import CheckService from '../../Services/CheckService';
@@ -28,6 +30,8 @@ const CheckComponent = ({ classes, enqueueSnackbar }) => {
     const [confirmOpen, setConfirmOpen] = useState(false);
     const [filter, setFilter] = useState([]);
     const [radioSelectedKey, setRadioSelectedKey] = useState('country');
+    const [dataCountry, setDataCountry] = useState(DataCountry);
+    const [dataResult, setDataResult] = useState(DataResult);
 
 
     useEffect(() => {
@@ -49,6 +53,7 @@ const CheckComponent = ({ classes, enqueueSnackbar }) => {
         cancelNotValid={cancelNotValid}
         isReadOnly={isReadOnly}
         onSaveClick={(check) => addCheck(check)}
+        countrys={dataCountry}
     />);
 
     const loadGrid = () => {
@@ -138,6 +143,8 @@ const CheckComponent = ({ classes, enqueueSnackbar }) => {
                             getFilterSelected={getChecksFilter}
                             radioSelected={radioSelectedKey}
                             setRadioSelected={setRadioSelectedKey}
+                            countrys={dataCountry}
+                            dataResult={dataResult}
                         />
                     </Paper>
                 </Grid>

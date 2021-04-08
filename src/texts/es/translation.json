@@ -22,7 +22,9 @@
   "Title_Validate_Save": "Información",
   "Message_Validate_Save": "Hay errores en el formulario, por tal motivo no se pudo proceder con el guardado. Asegurese de que los campos obligatorios estén completos.",
   "Button_Accept": "Aceptar",
-  "Message_Combo": "Seleccione los valores que desea filtrar",
+  "Message_Combo": "Seleccione los valores",
   "Check_Format_Dna": "Las letras ingresadas solo pueden ser A,T,C,G",
-  "Check_Format_Array": "La secuencia de adn ingresada debe ser una matriz NxN por ejemplo: ATCG, TTCC, AAGG, GCTA"
+  "Check_Format_Array": "La secuencia de adn ingresada debe ser una matriz NxN por ejemplo: ATCG, TTCC, AAGG, GCTA",
+  "checks_Apply": "Aplicar",
+  "Filter_By": "Filtrar por: "
 }

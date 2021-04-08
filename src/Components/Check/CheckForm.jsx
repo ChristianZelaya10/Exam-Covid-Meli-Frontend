@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const OwnerForm = ({ classes, check, setCheck, title,
-    onCancelClick, setCancelNotValid, cancelNotValid, isReadOnly, onSaveClick, setConfirmOpen }) => {
+    onCancelClick, setCancelNotValid, cancelNotValid, isReadOnly, onSaveClick, setConfirmOpen, countrys}) => {
     const { t } = useTranslation();
     const [nameValid, setNameValid] = useState(true);
     const [dnaValid, setDnaValid] = useState(true);
@@ -136,7 +136,7 @@ const OwnerForm = ({ classes, check, setCheck, title,
                     className={classes.formControl}
                     onBlur={(e) => validateNotEmpty(e.target.value, setCountryValid, cancelNotValid, setCancelNotValid)}
                     onChange={(e, value) => setCheck({ ...check, country: value })}
-                    options={['Argentina', 'Brasil', 'Uruguay', 'Paraguay', 'Peru']}
+                    options={countrys}
                     getOptionLabel={(option) => option}
                     renderInput={(params) => <TextField {...params}
                         error={!countryValid}

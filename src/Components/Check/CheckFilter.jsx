@@ -16,7 +16,7 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import { render } from "@testing-library/react";
 
 
-const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSelected, setRadioSelected, radioSelected }) => {
+const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSelected, setRadioSelected, radioSelected, countrys, dataResult}) => {
     const { t } = useTranslation();
 
 
@@ -44,7 +44,7 @@ const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSe
         <Autocomplete
             multiple
             id="checkboxes-tags-demo"
-            options={['Sano', 'Infectado', 'Inmune']}
+            options={dataResult}
             size="small"
             fullWidth
             disableCloseOnSelect
@@ -74,7 +74,7 @@ const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSe
         <Autocomplete
             multiple
             id="checkboxes-tags-demo"
-            options={['Argentina', 'Brasil', 'Uruguay', 'Paraguay', 'Peru']}
+            options={countrys}
             size="small"
             fullWidth
             disableCloseOnSelect
@@ -107,7 +107,7 @@ const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSe
                     direction="row"
                     justify="center" alignItems="center">
                     <FormControl component="fieldset">
-                        <FormLabel component="legend">Filtrar por: </FormLabel>
+                        <FormLabel component="legend">{t('Filter_By')}</FormLabel>
                         <RadioGroup defaultValue="country" aria-label="gender" name="customized-radios">
                             <FormControlLabel value="country" onClick={(e) => setRadioSelected(e.target.value)} control={<StyledRadio />} label="País" />
                             <FormControlLabel value="result" onClick={(e) => setRadioSelected(e.target.value)} control={<StyledRadio />} label="Resultado" />
@@ -123,7 +123,7 @@ const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSe
                     direction="row"
                     justify="center" alignItems="center">
                     <Button color="primary"
-                        fullWidth variant="contained" onClick={getFilterSelected} style={{ marginRight: '10px' }}>Aplicar</Button>
+                        fullWidth variant="contained" onClick={getFilterSelected} style={{ marginRight: '10px' }}>{t('checks_Apply')}</Button>
                 </Grid>
             </Grid>
         </>
