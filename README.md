@@ -2,9 +2,7 @@
 
 Ejercicio práctico para MercadoLibre. 
 
-Se puede ver una version estable del proyecto aqui:
-
-- [Frontend - Registro COVID-19](http://ec2-3-138-114-192.us-east-2.compute.amazonaws.com:3000/).
+Se puede ver una version estable del proyecto aqui: [Frontend - Registro COVID-19](http://ec2-3-138-114-192.us-east-2.compute.amazonaws.com:3000/).
 
 
 - [Ejercicio](#ejercicio)
@@ -21,7 +19,7 @@ Se puede ver una version estable del proyecto aqui:
 
 ### Implementacion y tecnologias usadas
 
-El proyecto esta hecho en react con material-ui
+El proyecto esta hecho en react con material-ui y para poder consumir la api usé la librería axios.
 
 La aplicación está subida a AWS EC2 y ya esta apuntando a la api rest tambien alojada en Amazon AWS.
 
@@ -46,21 +44,19 @@ Si tienen Git pueden
 
 Clonar este repositorio: https://github.com/ChristianZelaya10/Exam-Covid-Meli-Frontend.git
 
-Si no cuentan con GIT se puede descargar el .ZIP del proyecto
+Si no cuentan con GIT se puede descargar el .ZIP del proyecto.
 
-Una vez que ya tienen el proyecto localmente lo abren con un IDE en mi caso use VISUAL STUDIO CODE
+Una vez que ya tienen el proyecto localmente, lo abren con el IDE que prefieran, en mi caso use VISUAL STUDIO CODE.
 
-Ejecutan "npm install" para que de descargue la carpeta node_modules con todos sus paquetes
+Ejecutan "npm install" para que de descargue la carpeta node_modules con todos sus paquetes.
 
-Por ultimo ejecutan "npm start" y con esto ultimo ya estaría levantando el proyecto
+Por ultimo ejecutan "npm start" y con esto ya estaría levantando el proyecto.
 
-Una vez levantada la aplicacion se puede realizar invocaciones a la API.
-
-La url local por defecto es http://localhost:3000
+La url local por defecto es http://localhost:3000/
 
 
 ### Frontend Url
 
-URL local: http://localhost:3000
+URL local: http://localhost:3000/
 
 URL hosteada en Amazon: http://ec2-3-138-114-192.us-east-2.compute.amazonaws.com:3000/
