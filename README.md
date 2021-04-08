@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Ejercicio Registro de COVID-19 - Mercado libre - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ejercicio práctico para MercadoLibre. 
 
-## Available Scripts
+Se puede ver una version estable del proyecto aqui: [Frontend - Registro COVID-19](http://ec2-3-138-114-192.us-east-2.compute.amazonaws.com:3000/).
 
-In the project directory, you can run:
 
-### `npm start`
+- [Ejercicio](#ejercicio)
+  - [Implementación y tecnologias usadas](#implementaci%C3%B3n-y-tecnologias-usadas)
+  - [Comentarios](#comentarios-relevantes)
+- [Setup](#setup)
+  - [Instrucciones](#instrucciones)
+  - [Uso](#uso)
+  - [API Url](#api)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Ejercicio
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Implementacion y tecnologias usadas
 
-### `npm run build`
+El proyecto esta hecho en react con material-ui y para poder consumir la api usé la librería axios.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+La aplicación está subida a AWS EC2 y ya esta apuntando a la api rest tambien alojada en Amazon AWS.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Comentarios
+El diseño del front me guié de las imagenes que estaban en el documento, solo modifiqué algunas partes que desde mi punto de vista eran mejoras para la pagina:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Le agregue un icono de "ver" en la grilla para que sea mas entendible para el usuario que puede ver el detalle de ese registro.
 
-### `npm run eject`
+En los filtros pais y resultado lo hice con combos de múltiples valores para asegurarme que los datos seleccionados sea exactamente los que estan en la grilla.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+En el formulario agregue un combo de un solo valor para lo mismo que comentaba mas arriba, si dejaba que se pueda poner un string libre en el campo "pais" en el formulario de alta, daba la posibilidad de que se pueda poner cualquier cosa y luego en la parte de filtros tendria que traerme todos los paises distintos que haya ingresado el usuario.
+Agregando un combo en el campo pais me aseguro que sean siempre los mismos paises y que el usuario va a seleccionar alguno de esa lista.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Los datos que estan cargados en los combos son datos que estan en un archivo dentro del proyecto, tranquilamente podia agregar esos datos en una tabla country y crear un endpoint para luego consumirlo desde el front, pero para este ejercicio no sentia que era necesario y tampoco lo pedia el enunciado, entonces me decidí hacerlo de esta forma para ahorrar tiempo.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Setup
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Instrucciones
+Para compilar y ejecutar el proyecto es necesario contar con la ultima versión de [Node](https://nodejs.org/es/download/) y tener npm para la gestion de paquete, si no lo tienen se puede instalar la ultima versión ejecutando esta linea de comando en la consola "npm install npm@latest -g".
 
-## Learn More
+Si tienen Git pueden 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Clonar este repositorio: https://github.com/ChristianZelaya10/Exam-Covid-Meli-Frontend.git
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Si no cuentan con GIT se puede descargar el .ZIP del proyecto.
 
-### Code Splitting
+Una vez que ya tienen el proyecto localmente, lo abren con el IDE que prefieran, en mi caso use VISUAL STUDIO CODE.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Ejecutan "npm install" para que de descargue la carpeta node_modules con todos sus paquetes.
 
-### Analyzing the Bundle Size
+Por ultimo ejecutan "npm start" y con esto ya estaría levantando el proyecto.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+La url local por defecto es http://localhost:3000/
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Frontend Url
 
-### Advanced Configuration
+URL local: http://localhost:3000/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+URL hosteada en Amazon: http://ec2-3-138-114-192.us-east-2.compute.amazonaws.com:3000/
