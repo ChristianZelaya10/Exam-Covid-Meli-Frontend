@@ -1,6 +1,7 @@
 # Ejercicio Registro de COVID-19 - Mercado libre - Frontend
 
 Ejercicio práctico para MercadoLibre. 
+El examen está en el proyecto con el nombre "Challenge Fullstack Meli.pdf".
 
 Se puede ver una version estable del proyecto aqui: [Frontend - Registro COVID-19](http://ec2-3-138-114-192.us-east-2.compute.amazonaws.com:3000/).
 
