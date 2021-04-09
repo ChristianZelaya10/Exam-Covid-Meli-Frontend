@@ -11,26 +11,26 @@ const StatView = ({ classes, stats }) => {
     return (
         <Grid container item xs={12} sm={12} lg={12} spacing={2}>
             <Grid item xs={4} sm={4} lg={4}>
-                <Typography style={{textAlign:'center', color:'black'}} className={classes.title}>
-                    Sanos
+                <Typography className={classes.titleStats}>
+                    {t('Healthy')}
                 </Typography>
-                <Typography style={{textAlign:'center', color:'black'}} className={classes.title}>
+                <Typography className={classes.titleStats}>
                     {stats.healthy}
                 </Typography>
                 </Grid>
                 <Grid item xs={4} sm={4} lg={4}>
-                <Typography style={{textAlign:'center', color:'black'}} className={classes.title}>
-                    Infectados
+                <Typography className={classes.titleStats}>
+                    {t('Infected')}
                 </Typography>
-                <Typography style={{textAlign:'center', color:'black'}} className={classes.title}>
+                <Typography className={classes.titleStats}>
                     {stats.infected}
                 </Typography>
                 </Grid>
                 <Grid item xs={4} sm={4} lg={4}>
-                <Typography style={{textAlign:'center', color:'black'}} className={classes.title}>
-                    Inmunes
+                <Typography className={classes.titleStats}>
+                    {t('Inmune')}
                 </Typography>
-                <Typography style={{textAlign:'center', color:'black'}} className={classes.title}>
+                <Typography className={classes.titleStats}>
                     {stats.inmune}
                 </Typography>
                 </Grid>

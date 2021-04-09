@@ -84,6 +84,13 @@
         textAlign: 'left',
         fontWeight: 'bold'
     },
+    titleStats: {
+        color: 'black',
+        letterSpacing: 0,
+        fontSize: '1.2em',
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
     filter: {
         width: '100%',
         opacity: '1',

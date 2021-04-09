@@ -103,7 +103,7 @@ const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSe
     return (
         <>
             <Grid container item xs={12} sm={12} lg={12} spacing={2}>
-                <Grid item lg={4} xs={4} sm={4} container
+                <Grid item xs={4} md={4} sm={4} lg={4} container
                     direction="row"
                     justify="center" alignItems="center">
                     <FormControl component="fieldset">
@@ -114,16 +114,16 @@ const CheckFilter = ({ classes, filterSelecteds, setFilterSelecteds, getFilterSe
                         </RadioGroup>
                     </FormControl>
                 </Grid>
-                <Grid item xs={6} md={4} sm={6} lg={4} container
+                <Grid item xs={8} md={4} sm={4} lg={4} container
                     direction="row"
                     justify="center" alignItems="center">
                     {radioSelected == 'country' ? componentCountry : componentResult}
                 </Grid>
-                <Grid justify="flex-end" container item xs={2} sm={2} lg={4} container
+                <Grid justify="flex-end" container item xs={12} md={4} sm={4} lg={4} container
                     direction="row"
                     justify="center" alignItems="center">
                     <Button color="primary"
-                        fullWidth variant="contained" onClick={getFilterSelected} style={{ marginRight: '10px' }}>{t('checks_Apply')}</Button>
+                        fullWidth variant="contained" onClick={getFilterSelected}>{t('checks_Apply')}</Button>
                 </Grid>
             </Grid>
         </>
