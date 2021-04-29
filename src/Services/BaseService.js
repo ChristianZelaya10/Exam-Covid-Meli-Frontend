@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-axios.defaults.baseURL = 'http://18.218.75.220:8080/covid'
+axios.defaults.baseURL = 'http://3.141.105.125:8080/covid'
 //axios.defaults.baseURL = 'http://localhost:8080/covid'
 
 export default class BaseService {
