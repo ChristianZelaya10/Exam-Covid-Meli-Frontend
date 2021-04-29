@@ -68,7 +68,7 @@ const OwnerForm = ({ classes, check, setCheck, title,
         validateNotEmpty(check.country, setCountryValid, cancelNotValid, setCancelNotValid);
         validateNotEmpty(check.dna, setDnaValid, cancelNotValid, setCancelNotValid);
 
-        if (check.name != '' && check.country != '' && check.dna != '') {
+        if (check.name != '' && check.country != '' && check.dna != '' && validate_dna(check.dna, setDnaValid, setErrorHelper)) {
             let stringDna = check.dna.trim().replace(/ /g, "");
             let arrayDna = stringDna.split(/[\n,]+/);
             if (arrayDna[0].length == arrayDna.length) {
